@@ -15,6 +15,12 @@ resource "aws_instance" "web2" {
   subnet_id     = aws_subnet.main_b.id
   security_groups = [aws_security_group.web_sg.id]
   key_name        = var.key_name
+
+  root_block_device {
+    volume_size = 20      # Size in GiB
+    volume_type = "gp3"   # General Purpose SSD 
+  }
+  
   tags = {
     Name = "ProductionEnv2"
   }
