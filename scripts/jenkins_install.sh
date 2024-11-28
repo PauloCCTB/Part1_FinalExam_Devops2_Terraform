@@ -3,6 +3,9 @@ sudo yum -y update
 sudo yum -y install nodejs
 sudo yum -y install npm
 sudo yum -y update
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.corretto.aws/corretto.repo
+sudo yum update -y
 sudo yum -y install java-17-amazon-corretto
 sudo yum -y install git
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
