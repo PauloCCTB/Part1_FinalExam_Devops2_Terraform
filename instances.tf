@@ -14,13 +14,7 @@ resource "aws_instance" "web2" {
   instance_type   = "t2.micro"
   subnet_id     = aws_subnet.main_b.id
   security_groups = [aws_security_group.web_sg.id]
-  key_name        = var.key_name
-
-  root_block_device {
-    volume_size = 20      # Size in GiB
-    volume_type = "gp3"   # General Purpose SSD 
-  }
-  
+  key_name        = var.key_name  
   tags = {
     Name = "ProductionEnv2"
   }
@@ -33,6 +27,12 @@ resource "aws_instance" "jenkins" {
   security_groups = [aws_security_group.web_sg.id]
   key_name        = var.key_name
   user_data       = file("scripts/jenkins_install.sh")
+
+  root_block_device {
+     volume_size = 20      # Size in GiB
+     volume_type = "gp3"   # General Purpose SSD 
+  }
+  
   tags = {
     Name = "JenkinsController"
   }
