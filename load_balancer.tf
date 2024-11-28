@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "web_tg" {
 
   health_check {
     interval            = 30
-    path                = "/"
+    path                = "/Part1_FinalExam_Devops2_KelownaTrails/index.html"
     protocol            = "HTTP"
     timeout             = 5
     healthy_threshold   = 2
